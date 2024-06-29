@@ -28,7 +28,7 @@ public class InsertMemberController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String memId = req.getParameter("memId");
-		String memName = req.getParameter("memName");
+		String memName = req.getParameter("memName");  
 		String memTel = req.getParameter("memTel");
 		String memAddr = req.getParameter("memAddr");
 		
