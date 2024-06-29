@@ -68,6 +68,7 @@ table{
 			<th>이름</th>
 			<th>전화번호</th>
 			<th>주소</th>
+			<th>첨부파일</th>
 		</tr>
 		
 <%
@@ -83,20 +84,21 @@ table{
 			<td> <a href="<%=request.getContextPath() %>/member/detail.do?memId=<%=mv.getMemId() %>"><%=mv.getMemName() %></a></td>
 			<td><%=mv.getMemTel() %></td>
 			<td><%=mv.getMemAddr() %></td>
+			<td><%=mv.getAtchFileId() %></td>
 		</tr>
 <%
 		}  // for문
 	}else{
 %>
 		<tr>
-			<td colspan="4">회원정보가 존재하지 않습니다.</td>
+			<td colspan="5">회원정보가 존재하지 않습니다.</td>
 		</tr>
 <%
 	} //if문
 %>
 		
 	<tr align="center">
-		<td colspan="4"><a href="<%=request.getContextPath() %>/member/insert.do">[회원 등록]</a></td>
+		<td colspan="5"><a href="<%=request.getContextPath() %>/member/insert.do">[회원 등록]</a></td>
 		<!-- 브라우저 관점에서 하는거라서 servletExam이 앞에 들어가야한다 -->
 	</tr>
 

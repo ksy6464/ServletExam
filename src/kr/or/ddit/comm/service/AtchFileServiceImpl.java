@@ -70,7 +70,7 @@ public class AtchFileServiceImpl implements IAtchFileService {
 				
 				try {
 					// 업로드파일 저장하기
-					part.write(saveFileName);
+					part.write(saveFilePath);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -80,7 +80,7 @@ public class AtchFileServiceImpl implements IAtchFileService {
 				atchFileDetailVO.setStreFileNm(saveFileName);
 				atchFileDetailVO.setFileSize(fileSize);
 				atchFileDetailVO.setOrignlFileNm(fileName);
-				atchFileDetailVO.setFileStreCours(saveFileName);///파일 저장경로
+				atchFileDetailVO.setFileStreCours(saveFilePath);///파일 저장경로
 				atchFileDetailVO.setFileExtsn(fileExtension);
 				
 				fileDao.insertAtchFileDetail(atchFileDetailVO); //파일 세부정보 저장
@@ -107,15 +107,59 @@ public class AtchFileServiceImpl implements IAtchFileService {
 		return fileDao.getAtchFileDetail(athAtchFileDetailVO);
 	}
 	
+	public void daoTest() {
+		boolean isFirstFile = true;
+		AtchFileVO atchFileVO = null;
+		
+		if(isFirstFile) { //첫번째 업로드파일인지 체크 
+					
+					isFirstFile = false;
+					
+					atchFileVO = new AtchFileVO();
+					
+					fileDao.insertAtchFile(atchFileVO); // ATCH_FILE에 insert 하기
+					
+					
+				}
+			String uploadPath = "d:/D_Other/upload_files";
+			
+			String fileName = "abc.jpg";
+
+				
+				long fileSize = 10000; //파일크기
+				String saveFileName = UUID.randomUUID().toString().replace("-", ""); //저장파일명
+				String saveFilePath = uploadPath+"/"+saveFileName; //저장 파일경로
+				
+				// 확장자 추출
+				String fileExtension = fileName.lastIndexOf(".") < 0? ""
+						: fileName.substring(fileName.lastIndexOf(".")+1);
+				
+
+				
+				AtchFileDetailVO atchFileDetailVO = new AtchFileDetailVO();
+				atchFileDetailVO.setAtchFileId(atchFileVO.getAtchFileId());
+				atchFileDetailVO.setStreFileNm(saveFileName);
+				atchFileDetailVO.setFileSize(fileSize);
+				atchFileDetailVO.setOrignlFileNm(fileName);
+				atchFileDetailVO.setFileStreCours(saveFileName);///파일 저장경로
+				atchFileDetailVO.setFileExtsn(fileExtension);
+				
+				fileDao.insertAtchFileDetail(atchFileDetailVO); //파일 세부정보 저장
+	}
+	
 	///테스트를 위해 메인 만들자
 	public static void main(String[] args) {
 		
-		String fileName = "aaa.jpg";
-		String fileExt = fileName.lastIndexOf(".") < 0? ""
-				: fileName.substring(fileName.lastIndexOf(".")+1);
-		///
-		System.out.println(fileExt);
+//		String fileName = "aaa.jpg";
+//		String fileExt = fileName.lastIndexOf(".") < 0? ""
+//				: fileName.substring(fileName.lastIndexOf(".")+1);
+//		///
+//		System.out.println(fileExt);
 //		System.out.println(UUID.randomUUID().toString().replace("-", "")); //저장파일명 추출
+		
+		
+		///쿼리 잘 돌아가는지 테스트 하기 위해서 위에서 복사해서 붙여넣기 했다
+		new AtchFileServiceImpl().daoTest();
 		
 	}
 	

@@ -1,3 +1,5 @@
+<%@page import="kr.or.ddit.comm.vo.AtchFileDetailVO"%>
+<%@page import="kr.or.ddit.comm.vo.AtchFileVO"%>
 <%@page import="kr.or.ddit.member.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,6 +7,7 @@
 <%
 		MemberVO mv = (MemberVO) request.getAttribute("mv");
 
+		AtchFileVO atchFileVO = (AtchFileVO) request.getAttribute("atchFileVO");
 
 %>
     
@@ -34,6 +37,23 @@
 		<tr>
 			<td>주소:</td>
 			<td><%=mv.getMemAddr() %></td>
+		</tr>
+		<tr>
+			<td>첨부파일:</td>
+			<td>
+			<%
+				if(atchFileVO != null){
+					for(AtchFileDetailVO detailVO :atchFileVO.getAtchFileDetailList()){
+			%>
+					<div>
+						<a href="<%=request.getContextPath() %>/download.do?atchFileId=<%=detailVO.getAtchFileId()%>&fileSn=<%=detailVO.getFileSn() %>"><%=detailVO.getOrignlFileNm() %></a>
+					</div>
+			
+			<%
+					} //for
+				} //if
+			%>					
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2">

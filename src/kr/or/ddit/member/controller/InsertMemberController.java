@@ -36,13 +36,19 @@ public class InsertMemberController extends HttpServlet{
 		
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 		
-		//첨부파일 저장 기능
-		AtchFileVO athAtchFileVO = fileService.saveAtchFileList(req.getParts());
+		//첨부파일 저장하기
+		AtchFileVO atchFileVO = fileService.saveAtchFileList(req.getParts());
 		
 		MemberVO mv = new MemberVO(memId, memName, memTel, memAddr);
+
+		if(atchFileVO != null) { ///atchFileVO == null 이면 파일이없다는거니깐 그건 신경쓰지 말자
+			mv.setAtchFileId(atchFileVO.getAtchFileId());
+			
+		}
 		
-		String msg="";
+		
 		int cnt = memService.registerMember(mv);
+		String msg="";
 		
 		if(cnt > 0) {
 			// 회원 등록 작업 성공...

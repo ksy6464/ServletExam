@@ -41,13 +41,15 @@
 		#{streFileNm},
 		#{orignlFileNm},
 		#{fileExtsn},
+		<!-- #{fileCn, jdbcType=VARCHAR}, -->		
 		#{fileCn},
 		#{fileSize}
 		)
 	
 	</insert>
 	
-	<resultMap type="kr.or.ddit.comm.vo.AtchFileVO" id="atchFileMap">
+	<!-- <resultMap type="kr.or.ddit.comm.vo.AtchFileVO" id="atchFileMap"> -->
+	<resultMap type="atchFileVO" id="atchFileMap">
 		<id property="atchFileId" column="ATCH_FILE_ID"/>
 		<result property="creatDt" column="CREAT_DT"/>
 		<result property="useAt" column="USE_AT"/>
@@ -55,7 +57,8 @@
 	</resultMap>
 	
 	
-	<resultMap type="kr.or.ddit.comm.vo.AtchFileDetailVO"  id="atchFileDetailMap">
+	<!-- <resultMap type="kr.or.ddit.comm.vo.AtchFileDetailVO"  id="atchFileDetailMap"> -->
+	<resultMap type="atchFileDetailVO"  id="atchFileDetailMap">
 		<id property="atchFileId" column="ATCH_FILE_ID"/>
 		<id property="fileSn" column="FILE_SN"/>
 		<result property="fileStreCours" column="FILE_STRE_COURS"/>
