@@ -23,14 +23,15 @@ public class ListMemberController extends HttpServlet{
 		// 서비스 객체 생성하기
 		IMemberService memService = MemberServiceImpl.getInstance();
 		
-		List<MemberVO> memList = memService.getTotalMember();
+		List<MemberVO> memList = memService.getTotalMember(); ///전체목록을 DB에서 가져왔다
 		///이제 jsp가 사용할 수 있도록 해줘야한다
 		
-		req.setAttribute("memList", memList);
+		req.setAttribute("memList", memList); ///DB에서 가져온 회원목록들을 request에 넣어준다
 		
 		
 		
 		req.getRequestDispatcher("/views/member/list.jsp").forward(req, resp);
+		/// memList가 들어있는 request를 list.jsp로 전달한다(response도 전달)
 		
 	}
 	

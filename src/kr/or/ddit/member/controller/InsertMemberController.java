@@ -39,6 +39,7 @@ public class InsertMemberController extends HttpServlet{
 		//첨부파일 저장하기
 		AtchFileVO atchFileVO = fileService.saveAtchFileList(req.getParts());
 		
+		///매번 add하기 귀찮아서 파라미터값들이 있는 생성자 만들어줬다. 이로 인해 기본생성자가 사라져서 다른 파일들 에러나서 수정해줬다
 		MemberVO mv = new MemberVO(memId, memName, memTel, memAddr);
 
 		if(atchFileVO != null) { ///atchFileVO == null 이면 파일이없다는거니깐 그건 신경쓰지 말자
@@ -70,6 +71,7 @@ public class InsertMemberController extends HttpServlet{
 		//redirect(리다이렉트) 처리하기...
 		resp.sendRedirect(req.getContextPath()+"/member/list.do");
 		///이렇게 해주면 이제 화면과 url 동일하게 list.do가 나온다
+		
 		
 		
 	}

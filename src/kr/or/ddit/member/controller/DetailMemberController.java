@@ -29,7 +29,7 @@ public class DetailMemberController extends HttpServlet{
 		req.setAttribute("mv", mv);
 		
 		///혹시 첨부파일이 있다면 가져오고 싶다
-		if (mv.getAtchFileId() > 0) {
+		if (mv.getAtchFileId() > 0) { //첨부파일이 존재 하는 경우....
 			IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 			
 			AtchFileVO atchFileVO = new AtchFileVO();

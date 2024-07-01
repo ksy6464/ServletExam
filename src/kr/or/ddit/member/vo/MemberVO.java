@@ -11,6 +11,15 @@ import java.time.LocalDate;
  */
 public class MemberVO {
 	private String memId;
+	private String memPass;
+	public String getMemPass() {
+		return memPass;
+	}
+
+	public void setMemPass(String memPass) {
+		this.memPass = memPass;
+	}
+
 	private String memName;
 	private String memTel;
 	private String memAddr;

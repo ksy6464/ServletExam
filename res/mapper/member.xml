@@ -67,11 +67,12 @@
 	 
 
 	 <select id="getMember"  resultType="kr.or.ddit.member.vo.MemberVO">
-	 select mem_id as memid ,
-        mem_name as memname,
-        mem_tel as memtel,
-	 	 mem_addr as memaddr,
-        reg_dt as regdt,
+	 select mem_id as memId ,
+        mem_pass as memPass,
+        mem_name as memName,
+        mem_tel as memTel,
+	 	 mem_addr as memAddr,
+        reg_dt as reGdt,
         atch_file_id as atchFileId
 	  from mymember where mem_id=#{memId}
 	 </select>
